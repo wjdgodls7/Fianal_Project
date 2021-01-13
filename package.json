@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "webpack": "^5.13.0"
+  },
+  "name": "semicolon_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "\"http://github.com/wjdgodls7/Final_Project\"",
+  "license": "MIT"
+}
