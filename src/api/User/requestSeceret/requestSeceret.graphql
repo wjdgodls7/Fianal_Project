@@ -1,0 +1,6 @@
+type Mutation{
+    requestSeceret(email:String!): Boolean!
+}
+type Query{
+    something : String
+}

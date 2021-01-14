@@ -339,7 +339,9 @@ export type UserOrderByInput =
   | "lastName_ASC"
   | "lastName_DESC"
   | "bio_ASC"
-  | "bio_DESC";
+  | "bio_DESC"
+  | "loginSecret_ASC"
+  | "loginSecret_DESC";
 
 export type PostOrderByInput =
   | "id_ASC"
@@ -473,6 +475,20 @@ export interface UserWhereInput {
   comments_every?: Maybe<CommentWhereInput>;
   comments_some?: Maybe<CommentWhereInput>;
   comments_none?: Maybe<CommentWhereInput>;
+  loginSecret?: Maybe<String>;
+  loginSecret_not?: Maybe<String>;
+  loginSecret_in?: Maybe<String[] | String>;
+  loginSecret_not_in?: Maybe<String[] | String>;
+  loginSecret_lt?: Maybe<String>;
+  loginSecret_lte?: Maybe<String>;
+  loginSecret_gt?: Maybe<String>;
+  loginSecret_gte?: Maybe<String>;
+  loginSecret_contains?: Maybe<String>;
+  loginSecret_not_contains?: Maybe<String>;
+  loginSecret_starts_with?: Maybe<String>;
+  loginSecret_not_starts_with?: Maybe<String>;
+  loginSecret_ends_with?: Maybe<String>;
+  loginSecret_not_ends_with?: Maybe<String>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -741,6 +757,7 @@ export interface UserCreateWithoutCommentsInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserCreateManyWithoutFollowersInput {
@@ -761,6 +778,7 @@ export interface UserCreateWithoutFollowersInput {
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface PostCreateManyWithoutUserInput {
@@ -813,6 +831,7 @@ export interface UserCreateWithoutLikesInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserCreateManyWithoutFollowingInput {
@@ -833,6 +852,7 @@ export interface UserCreateWithoutFollowingInput {
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface LikeCreateManyWithoutUserInput {
@@ -875,6 +895,7 @@ export interface UserCreateWithoutPostsInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface CommentCreateManyWithoutUserInput {
@@ -940,6 +961,7 @@ export interface UserUpdateWithoutCommentsDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpdateManyWithoutFollowersInput {
@@ -979,6 +1001,7 @@ export interface UserUpdateWithoutFollowersDataInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface PostUpdateManyWithoutUserInput {
@@ -1135,6 +1158,7 @@ export interface UserUpdateWithoutLikesDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpdateManyWithoutFollowingInput {
@@ -1174,6 +1198,7 @@ export interface UserUpdateWithoutFollowingDataInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface LikeUpdateManyWithoutUserInput {
@@ -1234,6 +1259,7 @@ export interface UserUpdateWithoutPostsDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface CommentUpdateManyWithoutUserInput {
@@ -1504,6 +1530,20 @@ export interface UserScalarWhereInput {
   bio_not_starts_with?: Maybe<String>;
   bio_ends_with?: Maybe<String>;
   bio_not_ends_with?: Maybe<String>;
+  loginSecret?: Maybe<String>;
+  loginSecret_not?: Maybe<String>;
+  loginSecret_in?: Maybe<String[] | String>;
+  loginSecret_not_in?: Maybe<String[] | String>;
+  loginSecret_lt?: Maybe<String>;
+  loginSecret_lte?: Maybe<String>;
+  loginSecret_gt?: Maybe<String>;
+  loginSecret_gte?: Maybe<String>;
+  loginSecret_contains?: Maybe<String>;
+  loginSecret_not_contains?: Maybe<String>;
+  loginSecret_starts_with?: Maybe<String>;
+  loginSecret_not_starts_with?: Maybe<String>;
+  loginSecret_ends_with?: Maybe<String>;
+  loginSecret_not_ends_with?: Maybe<String>;
   AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
@@ -1520,6 +1560,7 @@ export interface UserUpdateManyDataInput {
   firstName?: Maybe<String>;
   lastName?: Maybe<String>;
   bio?: Maybe<String>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpsertWithoutLikesInput {
@@ -1697,6 +1738,7 @@ export interface UserCreateInput {
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface RoomCreateOneWithoutMessagesInput {
@@ -1739,6 +1781,7 @@ export interface UserUpdateDataInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpsertNestedInput {
@@ -1940,6 +1983,7 @@ export interface UserUpdateInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1948,6 +1992,7 @@ export interface UserUpdateManyMutationInput {
   firstName?: Maybe<String>;
   lastName?: Maybe<String>;
   bio?: Maybe<String>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface CommentSubscriptionWhereInput {
@@ -2068,6 +2113,7 @@ export interface User {
   firstName?: String;
   lastName?: String;
   bio?: String;
+  loginSecret?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -2122,6 +2168,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<String>;
 }
 
 export interface UserSubscription
@@ -2178,6 +2225,7 @@ export interface UserSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserNullablePromise
@@ -2234,6 +2282,7 @@ export interface UserNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<String>;
 }
 
 export interface Post {
@@ -3218,6 +3267,7 @@ export interface UserPreviousValues {
   firstName?: String;
   lastName?: String;
   bio?: String;
+  loginSecret?: String;
 }
 
 export interface UserPreviousValuesPromise
@@ -3229,6 +3279,7 @@ export interface UserPreviousValuesPromise
   firstName: () => Promise<String>;
   lastName: () => Promise<String>;
   bio: () => Promise<String>;
+  loginSecret: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -3240,6 +3291,7 @@ export interface UserPreviousValuesSubscription
   firstName: () => Promise<AsyncIterator<String>>;
   lastName: () => Promise<AsyncIterator<String>>;
   bio: () => Promise<AsyncIterator<String>>;
+  loginSecret: () => Promise<AsyncIterator<String>>;
 }
 
 /*
