@@ -1,0 +1,12 @@
+type FullPost{
+    post:Post!
+    comments:[Comment]
+    LikeCount : Int!
+    LikeUsers : [Like]
+    files : [File!]!
+    user : User!
+}
+
+type Query{
+    seeFullPost(id:String!):FullPost!
+}

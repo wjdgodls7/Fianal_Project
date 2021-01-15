@@ -4,6 +4,7 @@ type User {
   email: String!
   firstName: String 
   lastName: String
+  fullName:String
   bio: String
   following: [User!]!
   followers: [User!]!
@@ -11,6 +12,9 @@ type User {
   likes: [Like!]!
   comments: [Comment!]!
   loginSecret: String
+  isFollowing:Boolean!
+  isSelf:Boolean!
+  
 }
 
 type Post {
@@ -21,6 +25,7 @@ type Post {
   files: [File!]!
   likes: [Like!]!
   comments: [Comment!]!
+  isLiked:Boolean!
 }
 
 type Like {
@@ -54,4 +59,9 @@ type Message {
   from: User! 
   to: User! 
   room: Room!
+}
+
+type userProfile{
+    user :User!
+    posts:[Post!]!
 }
