@@ -341,7 +341,13 @@ export type UserOrderByInput =
   | "bio_ASC"
   | "bio_DESC"
   | "loginSecret_ASC"
-  | "loginSecret_DESC";
+  | "loginSecret_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "avatar_ASC"
+  | "avatar_DESC";
 
 export type PostOrderByInput =
   | "id_ASC"
@@ -349,25 +355,57 @@ export type PostOrderByInput =
   | "location_ASC"
   | "location_DESC"
   | "caption_ASC"
-  | "caption_DESC";
+  | "caption_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
-export type FileOrderByInput = "id_ASC" | "id_DESC" | "url_ASC" | "url_DESC";
+export type FileOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "url_ASC"
+  | "url_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
-export type LikeOrderByInput = "id_ASC" | "id_DESC";
+export type LikeOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type CommentOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "text_ASC"
-  | "text_DESC";
+  | "text_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type RoomOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type MessageOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "text_ASC"
-  | "text_DESC";
-
-export type RoomOrderByInput = "id_ASC" | "id_DESC";
+  | "text_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -475,6 +513,9 @@ export interface UserWhereInput {
   comments_every?: Maybe<CommentWhereInput>;
   comments_some?: Maybe<CommentWhereInput>;
   comments_none?: Maybe<CommentWhereInput>;
+  rooms_every?: Maybe<RoomWhereInput>;
+  rooms_some?: Maybe<RoomWhereInput>;
+  rooms_none?: Maybe<RoomWhereInput>;
   loginSecret?: Maybe<String>;
   loginSecret_not?: Maybe<String>;
   loginSecret_in?: Maybe<String[] | String>;
@@ -489,6 +530,36 @@ export interface UserWhereInput {
   loginSecret_not_starts_with?: Maybe<String>;
   loginSecret_ends_with?: Maybe<String>;
   loginSecret_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  avatar?: Maybe<String>;
+  avatar_not?: Maybe<String>;
+  avatar_in?: Maybe<String[] | String>;
+  avatar_not_in?: Maybe<String[] | String>;
+  avatar_lt?: Maybe<String>;
+  avatar_lte?: Maybe<String>;
+  avatar_gt?: Maybe<String>;
+  avatar_gte?: Maybe<String>;
+  avatar_contains?: Maybe<String>;
+  avatar_not_contains?: Maybe<String>;
+  avatar_starts_with?: Maybe<String>;
+  avatar_not_starts_with?: Maybe<String>;
+  avatar_ends_with?: Maybe<String>;
+  avatar_not_ends_with?: Maybe<String>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -547,6 +618,22 @@ export interface PostWhereInput {
   comments_every?: Maybe<CommentWhereInput>;
   comments_some?: Maybe<CommentWhereInput>;
   comments_none?: Maybe<CommentWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<PostWhereInput[] | PostWhereInput>;
   OR?: Maybe<PostWhereInput[] | PostWhereInput>;
   NOT?: Maybe<PostWhereInput[] | PostWhereInput>;
@@ -582,6 +669,22 @@ export interface FileWhereInput {
   url_ends_with?: Maybe<String>;
   url_not_ends_with?: Maybe<String>;
   post?: Maybe<PostWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<FileWhereInput[] | FileWhereInput>;
   OR?: Maybe<FileWhereInput[] | FileWhereInput>;
   NOT?: Maybe<FileWhereInput[] | FileWhereInput>;
@@ -604,6 +707,22 @@ export interface LikeWhereInput {
   id_not_ends_with?: Maybe<ID_Input>;
   user?: Maybe<UserWhereInput>;
   post?: Maybe<PostWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<LikeWhereInput[] | LikeWhereInput>;
   OR?: Maybe<LikeWhereInput[] | LikeWhereInput>;
   NOT?: Maybe<LikeWhereInput[] | LikeWhereInput>;
@@ -640,22 +759,68 @@ export interface CommentWhereInput {
   text_not_ends_with?: Maybe<String>;
   user?: Maybe<UserWhereInput>;
   post?: Maybe<PostWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<CommentWhereInput[] | CommentWhereInput>;
   OR?: Maybe<CommentWhereInput[] | CommentWhereInput>;
   NOT?: Maybe<CommentWhereInput[] | CommentWhereInput>;
 }
 
-export type FileWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type LikeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type MessageWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface RoomWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  participants_every?: Maybe<UserWhereInput>;
+  participants_some?: Maybe<UserWhereInput>;
+  participants_none?: Maybe<UserWhereInput>;
+  messages_every?: Maybe<MessageWhereInput>;
+  messages_some?: Maybe<MessageWhereInput>;
+  messages_none?: Maybe<MessageWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+  OR?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+  NOT?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+}
 
 export interface MessageWhereInput {
   id?: Maybe<ID_Input>;
@@ -689,36 +854,38 @@ export interface MessageWhereInput {
   from?: Maybe<UserWhereInput>;
   to?: Maybe<UserWhereInput>;
   room?: Maybe<RoomWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<MessageWhereInput[] | MessageWhereInput>;
   OR?: Maybe<MessageWhereInput[] | MessageWhereInput>;
   NOT?: Maybe<MessageWhereInput[] | MessageWhereInput>;
 }
 
-export interface RoomWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  participants_every?: Maybe<UserWhereInput>;
-  participants_some?: Maybe<UserWhereInput>;
-  participants_none?: Maybe<UserWhereInput>;
-  messages_every?: Maybe<MessageWhereInput>;
-  messages_some?: Maybe<MessageWhereInput>;
-  messages_none?: Maybe<MessageWhereInput>;
-  AND?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-  OR?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-  NOT?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-}
+export type FileWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type LikeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type MessageWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export type PostWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -757,7 +924,9 @@ export interface UserCreateWithoutCommentsInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserCreateManyWithoutFollowersInput {
@@ -778,7 +947,9 @@ export interface UserCreateWithoutFollowersInput {
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface PostCreateManyWithoutUserInput {
@@ -831,7 +1002,9 @@ export interface UserCreateWithoutLikesInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserCreateManyWithoutFollowingInput {
@@ -852,7 +1025,9 @@ export interface UserCreateWithoutFollowingInput {
   posts?: Maybe<PostCreateManyWithoutUserInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface LikeCreateManyWithoutUserInput {
@@ -895,7 +1070,9 @@ export interface UserCreateWithoutPostsInput {
   followers?: Maybe<UserCreateManyWithoutFollowingInput>;
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface CommentCreateManyWithoutUserInput {
@@ -923,6 +1100,54 @@ export interface PostCreateWithoutCommentsInput {
   user: UserCreateOneWithoutPostsInput;
   files?: Maybe<FileCreateManyWithoutPostInput>;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
+}
+
+export interface RoomCreateManyWithoutParticipantsInput {
+  create?: Maybe<
+    RoomCreateWithoutParticipantsInput[] | RoomCreateWithoutParticipantsInput
+  >;
+  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+}
+
+export interface RoomCreateWithoutParticipantsInput {
+  id?: Maybe<ID_Input>;
+  messages?: Maybe<MessageCreateManyWithoutRoomInput>;
+}
+
+export interface MessageCreateManyWithoutRoomInput {
+  create?: Maybe<
+    MessageCreateWithoutRoomInput[] | MessageCreateWithoutRoomInput
+  >;
+  connect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
+}
+
+export interface MessageCreateWithoutRoomInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  from: UserCreateOneInput;
+  to: UserCreateOneInput;
+}
+
+export interface UserCreateOneInput {
+  create?: Maybe<UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  username: String;
+  email: String;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  bio?: Maybe<String>;
+  following?: Maybe<UserCreateManyWithoutFollowersInput>;
+  followers?: Maybe<UserCreateManyWithoutFollowingInput>;
+  posts?: Maybe<PostCreateManyWithoutUserInput>;
+  likes?: Maybe<LikeCreateManyWithoutUserInput>;
+  comments?: Maybe<CommentCreateManyWithoutUserInput>;
+  rooms?: Maybe<RoomCreateManyWithoutParticipantsInput>;
+  loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface CommentCreateManyWithoutPostInput {
@@ -961,7 +1186,9 @@ export interface UserUpdateWithoutCommentsDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserUpdateManyWithoutFollowersInput {
@@ -1001,7 +1228,9 @@ export interface UserUpdateWithoutFollowersDataInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface PostUpdateManyWithoutUserInput {
@@ -1101,6 +1330,22 @@ export interface FileScalarWhereInput {
   url_not_starts_with?: Maybe<String>;
   url_ends_with?: Maybe<String>;
   url_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<FileScalarWhereInput[] | FileScalarWhereInput>;
   OR?: Maybe<FileScalarWhereInput[] | FileScalarWhereInput>;
   NOT?: Maybe<FileScalarWhereInput[] | FileScalarWhereInput>;
@@ -1158,7 +1403,9 @@ export interface UserUpdateWithoutLikesDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserUpdateManyWithoutFollowingInput {
@@ -1198,7 +1445,9 @@ export interface UserUpdateWithoutFollowingDataInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface LikeUpdateManyWithoutUserInput {
@@ -1259,7 +1508,9 @@ export interface UserUpdateWithoutPostsDataInput {
   followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface CommentUpdateManyWithoutUserInput {
@@ -1350,6 +1601,22 @@ export interface CommentScalarWhereInput {
   text_not_starts_with?: Maybe<String>;
   text_ends_with?: Maybe<String>;
   text_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
   OR?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
   NOT?: Maybe<CommentScalarWhereInput[] | CommentScalarWhereInput>;
@@ -1362,6 +1629,203 @@ export interface CommentUpdateManyWithWhereNestedInput {
 
 export interface CommentUpdateManyDataInput {
   text?: Maybe<String>;
+}
+
+export interface RoomUpdateManyWithoutParticipantsInput {
+  create?: Maybe<
+    RoomCreateWithoutParticipantsInput[] | RoomCreateWithoutParticipantsInput
+  >;
+  delete?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  set?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  disconnect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  update?: Maybe<
+    | RoomUpdateWithWhereUniqueWithoutParticipantsInput[]
+    | RoomUpdateWithWhereUniqueWithoutParticipantsInput
+  >;
+  upsert?: Maybe<
+    | RoomUpsertWithWhereUniqueWithoutParticipantsInput[]
+    | RoomUpsertWithWhereUniqueWithoutParticipantsInput
+  >;
+  deleteMany?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+}
+
+export interface RoomUpdateWithWhereUniqueWithoutParticipantsInput {
+  where: RoomWhereUniqueInput;
+  data: RoomUpdateWithoutParticipantsDataInput;
+}
+
+export interface RoomUpdateWithoutParticipantsDataInput {
+  messages?: Maybe<MessageUpdateManyWithoutRoomInput>;
+}
+
+export interface MessageUpdateManyWithoutRoomInput {
+  create?: Maybe<
+    MessageCreateWithoutRoomInput[] | MessageCreateWithoutRoomInput
+  >;
+  delete?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
+  connect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
+  set?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
+  disconnect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
+  update?: Maybe<
+    | MessageUpdateWithWhereUniqueWithoutRoomInput[]
+    | MessageUpdateWithWhereUniqueWithoutRoomInput
+  >;
+  upsert?: Maybe<
+    | MessageUpsertWithWhereUniqueWithoutRoomInput[]
+    | MessageUpsertWithWhereUniqueWithoutRoomInput
+  >;
+  deleteMany?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
+  updateMany?: Maybe<
+    | MessageUpdateManyWithWhereNestedInput[]
+    | MessageUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface MessageUpdateWithWhereUniqueWithoutRoomInput {
+  where: MessageWhereUniqueInput;
+  data: MessageUpdateWithoutRoomDataInput;
+}
+
+export interface MessageUpdateWithoutRoomDataInput {
+  text?: Maybe<String>;
+  from?: Maybe<UserUpdateOneRequiredInput>;
+  to?: Maybe<UserUpdateOneRequiredInput>;
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateDataInput {
+  username?: Maybe<String>;
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  bio?: Maybe<String>;
+  following?: Maybe<UserUpdateManyWithoutFollowersInput>;
+  followers?: Maybe<UserUpdateManyWithoutFollowingInput>;
+  posts?: Maybe<PostUpdateManyWithoutUserInput>;
+  likes?: Maybe<LikeUpdateManyWithoutUserInput>;
+  comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
+  loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface MessageUpsertWithWhereUniqueWithoutRoomInput {
+  where: MessageWhereUniqueInput;
+  update: MessageUpdateWithoutRoomDataInput;
+  create: MessageCreateWithoutRoomInput;
+}
+
+export interface MessageScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
+  OR?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
+  NOT?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
+}
+
+export interface MessageUpdateManyWithWhereNestedInput {
+  where: MessageScalarWhereInput;
+  data: MessageUpdateManyDataInput;
+}
+
+export interface MessageUpdateManyDataInput {
+  text?: Maybe<String>;
+}
+
+export interface RoomUpsertWithWhereUniqueWithoutParticipantsInput {
+  where: RoomWhereUniqueInput;
+  update: RoomUpdateWithoutParticipantsDataInput;
+  create: RoomCreateWithoutParticipantsInput;
+}
+
+export interface RoomScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+  OR?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+  NOT?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
 }
 
 export interface UserUpsertWithoutPostsInput {
@@ -1434,6 +1898,22 @@ export interface LikeScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<LikeScalarWhereInput[] | LikeScalarWhereInput>;
   OR?: Maybe<LikeScalarWhereInput[] | LikeScalarWhereInput>;
   NOT?: Maybe<LikeScalarWhereInput[] | LikeScalarWhereInput>;
@@ -1544,6 +2024,36 @@ export interface UserScalarWhereInput {
   loginSecret_not_starts_with?: Maybe<String>;
   loginSecret_ends_with?: Maybe<String>;
   loginSecret_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  avatar?: Maybe<String>;
+  avatar_not?: Maybe<String>;
+  avatar_in?: Maybe<String[] | String>;
+  avatar_not_in?: Maybe<String[] | String>;
+  avatar_lt?: Maybe<String>;
+  avatar_lte?: Maybe<String>;
+  avatar_gt?: Maybe<String>;
+  avatar_gte?: Maybe<String>;
+  avatar_contains?: Maybe<String>;
+  avatar_not_contains?: Maybe<String>;
+  avatar_starts_with?: Maybe<String>;
+  avatar_not_starts_with?: Maybe<String>;
+  avatar_ends_with?: Maybe<String>;
+  avatar_not_ends_with?: Maybe<String>;
   AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
@@ -1561,6 +2071,7 @@ export interface UserUpdateManyDataInput {
   lastName?: Maybe<String>;
   bio?: Maybe<String>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserUpsertWithoutLikesInput {
@@ -1623,6 +2134,22 @@ export interface PostScalarWhereInput {
   caption_not_starts_with?: Maybe<String>;
   caption_ends_with?: Maybe<String>;
   caption_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
   OR?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
   NOT?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
@@ -1721,12 +2248,22 @@ export interface MessageCreateInput {
   room: RoomCreateOneWithoutMessagesInput;
 }
 
-export interface UserCreateOneInput {
-  create?: Maybe<UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface RoomCreateOneWithoutMessagesInput {
+  create?: Maybe<RoomCreateWithoutMessagesInput>;
+  connect?: Maybe<RoomWhereUniqueInput>;
 }
 
-export interface UserCreateInput {
+export interface RoomCreateWithoutMessagesInput {
+  id?: Maybe<ID_Input>;
+  participants?: Maybe<UserCreateManyWithoutRoomsInput>;
+}
+
+export interface UserCreateManyWithoutRoomsInput {
+  create?: Maybe<UserCreateWithoutRoomsInput[] | UserCreateWithoutRoomsInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutRoomsInput {
   id?: Maybe<ID_Input>;
   username: String;
   email: String;
@@ -1739,21 +2276,7 @@ export interface UserCreateInput {
   likes?: Maybe<LikeCreateManyWithoutUserInput>;
   comments?: Maybe<CommentCreateManyWithoutUserInput>;
   loginSecret?: Maybe<String>;
-}
-
-export interface RoomCreateOneWithoutMessagesInput {
-  create?: Maybe<RoomCreateWithoutMessagesInput>;
-  connect?: Maybe<RoomWhereUniqueInput>;
-}
-
-export interface RoomCreateWithoutMessagesInput {
-  id?: Maybe<ID_Input>;
-  participants?: Maybe<UserCreateManyInput>;
-}
-
-export interface UserCreateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  avatar?: Maybe<String>;
 }
 
 export interface MessageUpdateInput {
@@ -1763,14 +2286,43 @@ export interface MessageUpdateInput {
   room?: Maybe<RoomUpdateOneRequiredWithoutMessagesInput>;
 }
 
-export interface UserUpdateOneRequiredInput {
-  create?: Maybe<UserCreateInput>;
-  update?: Maybe<UserUpdateDataInput>;
-  upsert?: Maybe<UserUpsertNestedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface RoomUpdateOneRequiredWithoutMessagesInput {
+  create?: Maybe<RoomCreateWithoutMessagesInput>;
+  update?: Maybe<RoomUpdateWithoutMessagesDataInput>;
+  upsert?: Maybe<RoomUpsertWithoutMessagesInput>;
+  connect?: Maybe<RoomWhereUniqueInput>;
 }
 
-export interface UserUpdateDataInput {
+export interface RoomUpdateWithoutMessagesDataInput {
+  participants?: Maybe<UserUpdateManyWithoutRoomsInput>;
+}
+
+export interface UserUpdateManyWithoutRoomsInput {
+  create?: Maybe<UserCreateWithoutRoomsInput[] | UserCreateWithoutRoomsInput>;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueWithoutRoomsInput[]
+    | UserUpdateWithWhereUniqueWithoutRoomsInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueWithoutRoomsInput[]
+    | UserUpsertWithWhereUniqueWithoutRoomsInput
+  >;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutRoomsInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutRoomsDataInput;
+}
+
+export interface UserUpdateWithoutRoomsDataInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1782,53 +2334,13 @@ export interface UserUpdateDataInput {
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface RoomUpdateOneRequiredWithoutMessagesInput {
-  create?: Maybe<RoomCreateWithoutMessagesInput>;
-  update?: Maybe<RoomUpdateWithoutMessagesDataInput>;
-  upsert?: Maybe<RoomUpsertWithoutMessagesInput>;
-  connect?: Maybe<RoomWhereUniqueInput>;
-}
-
-export interface RoomUpdateWithoutMessagesDataInput {
-  participants?: Maybe<UserUpdateManyInput>;
-}
-
-export interface UserUpdateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  update?: Maybe<
-    | UserUpdateWithWhereUniqueNestedInput[]
-    | UserUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | UserUpsertWithWhereUniqueNestedInput[]
-    | UserUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface UserUpdateWithWhereUniqueNestedInput {
+export interface UserUpsertWithWhereUniqueWithoutRoomsInput {
   where: UserWhereUniqueInput;
-  data: UserUpdateDataInput;
-}
-
-export interface UserUpsertWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
+  update: UserUpdateWithoutRoomsDataInput;
+  create: UserCreateWithoutRoomsInput;
 }
 
 export interface RoomUpsertWithoutMessagesInput {
@@ -1866,110 +2378,13 @@ export interface PostUpdateManyMutationInput {
 
 export interface RoomCreateInput {
   id?: Maybe<ID_Input>;
-  participants?: Maybe<UserCreateManyInput>;
+  participants?: Maybe<UserCreateManyWithoutRoomsInput>;
   messages?: Maybe<MessageCreateManyWithoutRoomInput>;
 }
 
-export interface MessageCreateManyWithoutRoomInput {
-  create?: Maybe<
-    MessageCreateWithoutRoomInput[] | MessageCreateWithoutRoomInput
-  >;
-  connect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
-}
-
-export interface MessageCreateWithoutRoomInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  from: UserCreateOneInput;
-  to: UserCreateOneInput;
-}
-
 export interface RoomUpdateInput {
-  participants?: Maybe<UserUpdateManyInput>;
+  participants?: Maybe<UserUpdateManyWithoutRoomsInput>;
   messages?: Maybe<MessageUpdateManyWithoutRoomInput>;
-}
-
-export interface MessageUpdateManyWithoutRoomInput {
-  create?: Maybe<
-    MessageCreateWithoutRoomInput[] | MessageCreateWithoutRoomInput
-  >;
-  delete?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
-  connect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
-  set?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
-  disconnect?: Maybe<MessageWhereUniqueInput[] | MessageWhereUniqueInput>;
-  update?: Maybe<
-    | MessageUpdateWithWhereUniqueWithoutRoomInput[]
-    | MessageUpdateWithWhereUniqueWithoutRoomInput
-  >;
-  upsert?: Maybe<
-    | MessageUpsertWithWhereUniqueWithoutRoomInput[]
-    | MessageUpsertWithWhereUniqueWithoutRoomInput
-  >;
-  deleteMany?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
-  updateMany?: Maybe<
-    | MessageUpdateManyWithWhereNestedInput[]
-    | MessageUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface MessageUpdateWithWhereUniqueWithoutRoomInput {
-  where: MessageWhereUniqueInput;
-  data: MessageUpdateWithoutRoomDataInput;
-}
-
-export interface MessageUpdateWithoutRoomDataInput {
-  text?: Maybe<String>;
-  from?: Maybe<UserUpdateOneRequiredInput>;
-  to?: Maybe<UserUpdateOneRequiredInput>;
-}
-
-export interface MessageUpsertWithWhereUniqueWithoutRoomInput {
-  where: MessageWhereUniqueInput;
-  update: MessageUpdateWithoutRoomDataInput;
-  create: MessageCreateWithoutRoomInput;
-}
-
-export interface MessageScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  AND?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
-  OR?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
-  NOT?: Maybe<MessageScalarWhereInput[] | MessageScalarWhereInput>;
-}
-
-export interface MessageUpdateManyWithWhereNestedInput {
-  where: MessageScalarWhereInput;
-  data: MessageUpdateManyDataInput;
-}
-
-export interface MessageUpdateManyDataInput {
-  text?: Maybe<String>;
 }
 
 export interface UserUpdateInput {
@@ -1983,7 +2398,9 @@ export interface UserUpdateInput {
   posts?: Maybe<PostUpdateManyWithoutUserInput>;
   likes?: Maybe<LikeUpdateManyWithoutUserInput>;
   comments?: Maybe<CommentUpdateManyWithoutUserInput>;
+  rooms?: Maybe<RoomUpdateManyWithoutParticipantsInput>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1993,6 +2410,7 @@ export interface UserUpdateManyMutationInput {
   lastName?: Maybe<String>;
   bio?: Maybe<String>;
   loginSecret?: Maybe<String>;
+  avatar?: Maybe<String>;
 }
 
 export interface CommentSubscriptionWhereInput {
@@ -2079,6 +2497,8 @@ export interface NodeNode {
 export interface Comment {
   id: ID_Output;
   text: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface CommentPromise extends Promise<Comment>, Fragmentable {
@@ -2086,6 +2506,8 @@ export interface CommentPromise extends Promise<Comment>, Fragmentable {
   text: () => Promise<String>;
   user: <T = UserPromise>() => T;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface CommentSubscription
@@ -2095,6 +2517,8 @@ export interface CommentSubscription
   text: () => Promise<AsyncIterator<String>>;
   user: <T = UserSubscription>() => T;
   post: <T = PostSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface CommentNullablePromise
@@ -2104,6 +2528,8 @@ export interface CommentNullablePromise
   text: () => Promise<String>;
   user: <T = UserPromise>() => T;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface User {
@@ -2114,6 +2540,9 @@ export interface User {
   lastName?: String;
   bio?: String;
   loginSecret?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  avatar?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -2168,7 +2597,19 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  rooms: <T = FragmentableArray<Room>>(args?: {
+    where?: RoomWhereInput;
+    orderBy?: RoomOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   loginSecret: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  avatar: () => Promise<String>;
 }
 
 export interface UserSubscription
@@ -2225,7 +2666,19 @@ export interface UserSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  rooms: <T = Promise<AsyncIterator<RoomSubscription>>>(args?: {
+    where?: RoomWhereInput;
+    orderBy?: RoomOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   loginSecret: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  avatar: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserNullablePromise
@@ -2282,13 +2735,27 @@ export interface UserNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  rooms: <T = FragmentableArray<Room>>(args?: {
+    where?: RoomWhereInput;
+    orderBy?: RoomOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   loginSecret: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  avatar: () => Promise<String>;
 }
 
 export interface Post {
   id: ID_Output;
   location?: String;
   caption: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface PostPromise extends Promise<Post>, Fragmentable {
@@ -2323,6 +2790,8 @@ export interface PostPromise extends Promise<Post>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface PostSubscription
@@ -2359,6 +2828,8 @@ export interface PostSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface PostNullablePromise
@@ -2395,17 +2866,23 @@ export interface PostNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface File {
   id: ID_Output;
   url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface FilePromise extends Promise<File>, Fragmentable {
   id: () => Promise<ID_Output>;
   url: () => Promise<String>;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface FileSubscription
@@ -2414,6 +2891,8 @@ export interface FileSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   url: () => Promise<AsyncIterator<String>>;
   post: <T = PostSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface FileNullablePromise
@@ -2422,16 +2901,22 @@ export interface FileNullablePromise
   id: () => Promise<ID_Output>;
   url: () => Promise<String>;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface Like {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface LikePromise extends Promise<Like>, Fragmentable {
   id: () => Promise<ID_Output>;
   user: <T = UserPromise>() => T;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface LikeSubscription
@@ -2440,6 +2925,8 @@ export interface LikeSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   user: <T = UserSubscription>() => T;
   post: <T = PostSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface LikeNullablePromise
@@ -2448,6 +2935,131 @@ export interface LikeNullablePromise
   id: () => Promise<ID_Output>;
   user: <T = UserPromise>() => T;
   post: <T = PostPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Room {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface RoomPromise extends Promise<Room>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  participants: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  messages: <T = FragmentableArray<Message>>(args?: {
+    where?: MessageWhereInput;
+    orderBy?: MessageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RoomSubscription
+  extends Promise<AsyncIterator<Room>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  participants: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  messages: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
+    where?: MessageWhereInput;
+    orderBy?: MessageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RoomNullablePromise
+  extends Promise<Room | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  participants: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  messages: <T = FragmentableArray<Message>>(args?: {
+    where?: MessageWhereInput;
+    orderBy?: MessageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Message {
+  id: ID_Output;
+  text: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface MessagePromise extends Promise<Message>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+  from: <T = UserPromise>() => T;
+  to: <T = UserPromise>() => T;
+  room: <T = RoomPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface MessageSubscription
+  extends Promise<AsyncIterator<Message>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  text: () => Promise<AsyncIterator<String>>;
+  from: <T = UserSubscription>() => T;
+  to: <T = UserSubscription>() => T;
+  room: <T = RoomSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface MessageNullablePromise
+  extends Promise<Message | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  text: () => Promise<String>;
+  from: <T = UserPromise>() => T;
+  to: <T = UserPromise>() => T;
+  room: <T = RoomPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface CommentConnection {
@@ -2633,113 +3245,6 @@ export interface AggregateLikeSubscription
   extends Promise<AsyncIterator<AggregateLike>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Message {
-  id: ID_Output;
-  text: String;
-}
-
-export interface MessagePromise extends Promise<Message>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-  from: <T = UserPromise>() => T;
-  to: <T = UserPromise>() => T;
-  room: <T = RoomPromise>() => T;
-}
-
-export interface MessageSubscription
-  extends Promise<AsyncIterator<Message>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  text: () => Promise<AsyncIterator<String>>;
-  from: <T = UserSubscription>() => T;
-  to: <T = UserSubscription>() => T;
-  room: <T = RoomSubscription>() => T;
-}
-
-export interface MessageNullablePromise
-  extends Promise<Message | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  text: () => Promise<String>;
-  from: <T = UserPromise>() => T;
-  to: <T = UserPromise>() => T;
-  room: <T = RoomPromise>() => T;
-}
-
-export interface Room {
-  id: ID_Output;
-}
-
-export interface RoomPromise extends Promise<Room>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  participants: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  messages: <T = FragmentableArray<Message>>(args?: {
-    where?: MessageWhereInput;
-    orderBy?: MessageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface RoomSubscription
-  extends Promise<AsyncIterator<Room>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  participants: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  messages: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
-    where?: MessageWhereInput;
-    orderBy?: MessageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface RoomNullablePromise
-  extends Promise<Room | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  participants: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  messages: <T = FragmentableArray<Message>>(args?: {
-    where?: MessageWhereInput;
-    orderBy?: MessageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
 }
 
 export interface MessageConnection {
@@ -3002,6 +3507,8 @@ export interface CommentSubscriptionPayloadSubscription
 export interface CommentPreviousValues {
   id: ID_Output;
   text: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface CommentPreviousValuesPromise
@@ -3009,6 +3516,8 @@ export interface CommentPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   text: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface CommentPreviousValuesSubscription
@@ -3016,6 +3525,8 @@ export interface CommentPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   text: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface FileSubscriptionPayload {
@@ -3046,6 +3557,8 @@ export interface FileSubscriptionPayloadSubscription
 export interface FilePreviousValues {
   id: ID_Output;
   url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface FilePreviousValuesPromise
@@ -3053,6 +3566,8 @@ export interface FilePreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface FilePreviousValuesSubscription
@@ -3060,6 +3575,8 @@ export interface FilePreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface LikeSubscriptionPayload {
@@ -3089,18 +3606,24 @@ export interface LikeSubscriptionPayloadSubscription
 
 export interface LikePreviousValues {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface LikePreviousValuesPromise
   extends Promise<LikePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface LikePreviousValuesSubscription
   extends Promise<AsyncIterator<LikePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface MessageSubscriptionPayload {
@@ -3131,6 +3654,8 @@ export interface MessageSubscriptionPayloadSubscription
 export interface MessagePreviousValues {
   id: ID_Output;
   text: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface MessagePreviousValuesPromise
@@ -3138,6 +3663,8 @@ export interface MessagePreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   text: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface MessagePreviousValuesSubscription
@@ -3145,6 +3672,8 @@ export interface MessagePreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   text: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface PostSubscriptionPayload {
@@ -3176,6 +3705,8 @@ export interface PostPreviousValues {
   id: ID_Output;
   location?: String;
   caption: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface PostPreviousValuesPromise
@@ -3184,6 +3715,8 @@ export interface PostPreviousValuesPromise
   id: () => Promise<ID_Output>;
   location: () => Promise<String>;
   caption: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface PostPreviousValuesSubscription
@@ -3192,6 +3725,8 @@ export interface PostPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   location: () => Promise<AsyncIterator<String>>;
   caption: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface RoomSubscriptionPayload {
@@ -3221,18 +3756,24 @@ export interface RoomSubscriptionPayloadSubscription
 
 export interface RoomPreviousValues {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface RoomPreviousValuesPromise
   extends Promise<RoomPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface RoomPreviousValuesSubscription
   extends Promise<AsyncIterator<RoomPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -3268,6 +3809,9 @@ export interface UserPreviousValues {
   lastName?: String;
   bio?: String;
   loginSecret?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  avatar?: String;
 }
 
 export interface UserPreviousValuesPromise
@@ -3280,6 +3824,9 @@ export interface UserPreviousValuesPromise
   lastName: () => Promise<String>;
   bio: () => Promise<String>;
   loginSecret: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  avatar: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -3292,6 +3839,9 @@ export interface UserPreviousValuesSubscription
   lastName: () => Promise<AsyncIterator<String>>;
   bio: () => Promise<AsyncIterator<String>>;
   loginSecret: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  avatar: () => Promise<AsyncIterator<String>>;
 }
 
 /*
@@ -3304,6 +3854,16 @@ export type ID_Output = string;
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
+
+/*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
