@@ -1,5 +1,5 @@
 type Mutation{
-    requestSeceret(email:String!): Boolean!
+    requestSecret(email:String!): Boolean!
 }
 type Query{
     something : String
