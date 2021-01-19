@@ -1,4 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
+import { FULL_POST_FRAGMENT } from "../../../fragments";
 import { isAuthenticated } from "../../../middlewares";
 
 export default {
@@ -14,7 +15,7 @@ export default {
                     }
                 },
                 orderBy: "createdAt_DESC"
-            });
+            }).$fragment(FULL_POST_FRAGMENT);
         }
     }
 };
