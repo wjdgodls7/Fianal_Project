@@ -23,6 +23,7 @@ export const FILE_FRAGMENT = `
     url
     createdAt
     updatedAt
+    
 `;
 
 export const MESSAGE_FRAGMENT = `
@@ -44,9 +45,8 @@ export const FULL_POST_FRAGMENT = `
         id
         location
         caption
-        files {
-            ${FILE_FRAGMENT}
-        }
+        files {${FILE_FRAGMENT}}
+    
         comments {
             ${COMMENT_FRAGMENT}
         }
@@ -76,4 +76,14 @@ export const ROOM_FRAGMENT = `
         createdAt
         updatedAt
     }
+`;
+
+export const SEARCHPOST_FRAGMENT = `
+{   
+    id
+          files {
+              id
+        url
+      }
+}
 `;

@@ -17,7 +17,9 @@ type User {
   createdAt: String
   updatedAt: String
   avatar:String
-  
+  followingCount: Int!
+  followersCount: Int!
+  postCount:Int!
 }
 
 type Post {
@@ -32,6 +34,7 @@ type Post {
   likeCount:Int!
   createdAt: String
   updatedAt: String
+  commentCount:Int!
 }
 
 type Like {

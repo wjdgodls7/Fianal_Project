@@ -29,6 +29,21 @@ export default {
             const { user } = request;
             const { id: parentId } = parent;
             return user.id === parentId;
-        }
+        },
+        followingCount: (parent) =>
+            prisma
+                .usersConnection({ where: { follyowers_some: { id: parent.id } } })
+                .aggregate()
+                .count(),
+        followersCount: (parent) =>
+            prisma
+                .usersConnection({ where: { following_some: { id: parent.id } } })
+                .aggregate()
+                .count(),
+        postCount: (parent) =>
+            prisma
+                .postsConnection({ where: { user: { id: parent.id } } })
+                .aggregate()
+                .count(),
     }
 };

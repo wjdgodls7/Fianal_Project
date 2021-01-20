@@ -1675,7 +1675,7 @@ type User {
   loginSecret: String
   createdAt: DateTime!
   updatedAt: DateTime!
-  avatar: String
+  avatar: String!
 }
 
 type UserConnection {
@@ -1870,7 +1870,7 @@ type UserPreviousValues {
   loginSecret: String
   createdAt: DateTime!
   updatedAt: DateTime!
-  avatar: String
+  avatar: String!
 }
 
 input UserScalarWhereInput {

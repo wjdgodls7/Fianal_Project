@@ -2542,7 +2542,7 @@ export interface User {
   loginSecret?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  avatar?: String;
+  avatar: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -3811,7 +3811,7 @@ export interface UserPreviousValues {
   loginSecret?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  avatar?: String;
+  avatar: String;
 }
 
 export interface UserPreviousValuesPromise
