@@ -1,5 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
-// import { USER_FRAGMENT } from "../../../fragments";
+import { FULL_POST_FRAGMENT } from "../../../fragments";
 import { isAuthenticated } from "../../../middlewares"
 
 export default {
@@ -8,7 +8,7 @@ export default {
             isAuthenticated(request);
             const { user } = request;
             const userprofile = await prisma.user({ id: user.id });
-            const posts = await prisma.user({ id: user.id }).posts();
+            const posts = await prisma.user({ id: user.id }).posts().$fragment(FULL_POST_FRAGMENT);
             return { user: userprofile, posts }
         }
     }

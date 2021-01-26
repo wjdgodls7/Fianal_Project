@@ -1,11 +1,11 @@
 export const USER_FRAGMENT = `
+avatar
     id
     firstName
     lastName
     username
-    avatar
     createdAt
-    updatedAt
+    updatedAt   
 `;
 
 export const COMMENT_FRAGMENT = `
@@ -76,14 +76,4 @@ export const ROOM_FRAGMENT = `
         createdAt
         updatedAt
     }
-`;
-
-export const SEARCHPOST_FRAGMENT = `
-{   
-    id
-          files {
-              id
-        url
-      }
-}
 `;

@@ -32,7 +32,7 @@ export default {
         },
         followingCount: (parent) =>
             prisma
-                .usersConnection({ where: { follyowers_some: { id: parent.id } } })
+                .usersConnection({ where: { followers_some: { id: parent.id } } })
                 .aggregate()
                 .count(),
         followersCount: (parent) =>
