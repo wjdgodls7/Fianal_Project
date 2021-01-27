@@ -15,8 +15,8 @@
 - [x] See the full photo
 - [x] Edit my profile
 - [x] Upload a photo
-- [ ] Edit the photo (Delete)
-- [ ] See the feed
-- [ ] Send Direct Message
-- [ ] See room
-- [ ] Receive Message(Real time)
+- [x] Edit the photo (Delete)
+- [x] See the feed
+- [x] Send Direct Message
+- [x] See room
+- [x] Receive Message(Real time)
