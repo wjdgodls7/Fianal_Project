@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
@@ -16,7 +17,9 @@
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@babel/runtime": "^7.12.5",
     "aws-sdk": "^2.831.0",
+    "copy": "^0.3.2",
     "dotenv": "^8.2.0",
     "expo-facebook": "^10.0.0",
     "expo-media-library": "^11.0.0",
@@ -42,6 +45,8 @@
     "dev": "nodemon --exec babel-node src/server.js",
     "deploy": "prisma1 deploy",
     "generate": "prisma1 generate",
-    "prisma": "yarn run deploy && yarn run generate"
+    "prisma": "yarn run deploy && yarn run generate",
+    "build": "babel src -d build",
+    "postbuild": "cd src && yarn copy src/api/**/*.graphql ./build/api"
   }
 }
