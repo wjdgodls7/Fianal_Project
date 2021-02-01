@@ -11,7 +11,6 @@ type User {
   posts: [Post!]!
   likes: [Like!]!
   comments: [Comment!]!
-  loginSecret: String
   isFollowing:Boolean!
   isSelf:Boolean!
   createdAt: String
@@ -20,6 +19,7 @@ type User {
   followingCount: Int!
   followersCount: Int!
   postCount:Int!
+  password: String!
 }
 
 type Post {
@@ -85,4 +85,9 @@ type userProfile{
     posts:[Post!]!
     createdAt: String
   updatedAt: String
+}
+type userLogin{
+  id: ID!
+  loginSecret:String
+  email:String!
 }

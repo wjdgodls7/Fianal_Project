@@ -11,11 +11,11 @@ export const generateSecret = () => {
     return `${adjectives[randomNumber]} ${nouns[randomNumber]}`;
 }
 
-const sendMail = (email) => {
+const sendEmail = (email) => {
     const options = {
         auth: {
-            domain: process.env.DOMAIN,
-            apiKey: process.env.API_KEY
+            domain: process.env.MAILGUN_DOMAIN,
+            apiKey: process.env.MAILGUN_APIKEY
         }
     }
     const client = nodemailer.createTransport(mgTransport(options));
@@ -25,12 +25,12 @@ const sendMail = (email) => {
 
 export const sendSecretMail = (address, secret) => {
     const email = {
-        from: "Master@semicolon.com",
+        from: "master@semicolon.com",
         to: address,
-        subject: "Login Secret for Semicolon ~🔒",
-        html: `반가워요! 이 문구는 회원님과 저만의 비밀입니다. (^///^) <br> <Strong>${secret}</Strong> 👈이 문구를 복사해서 붙여넣으세요.`
-    }
-    return sendMail(email);
+        subject: "Login Secret for Semicolon🔒",
+        html:`Hello! Your login secret word is <Strong>'${secret}'</Strong>. <br/>Copy paste on the app/web 😊`    
+    } 
+    return sendEmail(email);
 }
 
 export const generateToken = (id) => {

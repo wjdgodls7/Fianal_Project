@@ -5,22 +5,23 @@ export default {
     Mutation: {
         addComment: async (_, args, { request }) => {
             isAuthenticated(request);
+            console.log(args);
             const { text, postId } = args;
             const { user } = request;
-
-            const addComment = await prisma.createComment({
+            const comment = await prisma.createComment({
                 user: {
                     connect: {
-                        id: user.id
+                        id: user.id,
                     }
                 },
                 post: {
                     connect: {
                         id: postId
                     }
-                }, text
+                },
+                text
             });
-            return addComment;
+            return comment;
         }
     }
 }

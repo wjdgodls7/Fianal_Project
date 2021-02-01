@@ -1,6 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
-import { FULL_POST_FRAGMENT } from "../../../fragments";
-import { isAuthenticated } from "../../../middlewares";
+import { isAuthenticated } from "../../../middlewares"
 
 export default {
     Query: {
@@ -14,8 +13,8 @@ export default {
                         id_in: [...following.map(user => user.id), user.id]
                     }
                 },
-                orderBy: "createdAt_DESC"
-            }).$fragment(FULL_POST_FRAGMENT);
+               orderBy:"createdAt_DESC"
+            });
         }
     }
-};
+}; 
