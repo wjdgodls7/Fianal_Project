@@ -1,6 +1,0 @@
-type Mutation{
-    requestSecret(email:String!): Boolean!
-}
-type Query{
-    something : String
-}

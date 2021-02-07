@@ -9,27 +9,8 @@ export default {
             if (user.loginSecret === secret) {
                 return secret
             } else {
-                throw Error("츄라이 츄라이 어게인");
+                throw Error("이메일이랑 비밀번호랑 다름 🤐");
             }
         }
     }
 }
-
-// import { prisma } from "../../../../generated/prisma-client";
-// import { generateToken } from "../../../utils";
-
-// export default {
-//     Mutation: {
-//         confirmSecret: async (_, args) => {
-
-//             const { email, secret } = args;
-//             const user = await prisma.user({ email });
-//             console.log(user);
-//             if (user.loginSecret === secret) {
-//                 return generateToken(user.id);
-//             } else {
-//                 throw Error("츄라이 츄라이 어게인");
-//             }
-//         }
-//     }
-// }

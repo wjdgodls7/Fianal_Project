@@ -40,7 +40,7 @@ export default {
                 .usersConnection({ where: { following_some: { id: parent.id } } })
                 .aggregate()
                 .count(),
-        postCount: (parent) =>
+        postsCount: (parent) =>
             prisma
                 .postsConnection({ where: { user: { id: parent.id } } })
                 .aggregate()

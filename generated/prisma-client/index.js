@@ -9,11 +9,27 @@ var models = [
     embedded: false
   },
   {
+    name: "UserLogin",
+    embedded: false
+  },
+  {
+    name: "Story",
+    embedded: false
+  },
+  {
     name: "Post",
     embedded: false
   },
   {
+    name: "Hash",
+    embedded: false
+  },
+  {
     name: "Like",
+    embedded: false
+  },
+  {
+    name: "CommentLike",
     embedded: false
   },
   {
@@ -30,10 +46,6 @@ var models = [
   },
   {
     name: "Message",
-    embedded: false
-  },
-  {
-    name: "UserLogin",
     embedded: false
   }
 ];

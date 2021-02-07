@@ -1,5 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
-import { isAuthenticated } from "../../../middlewares";
+import { isAuthenticated } from "../../../middlewares"
 
 export default {
     Mutation: {
@@ -10,18 +10,18 @@ export default {
 
             try {
                 await prisma.updateUser({
-                    where: { id }, data: {
-                        followers: {
-                            connect: {
-                                id: user.id
-                            }
+                    where: { id:user.id },
+                    data: {
+                        following: {
+                            connect:{id}
                         }
-                    }
+                    }                    
                 })
                 return true;
-            } catch {
+            } catch (e) {
+                console.log(e);
                 return false;
             }
         }
-    }
+    }   
 }

@@ -1,8 +1,9 @@
 type User {
   id: ID! @id
-  email: String! @unique
-  password: String
+  password:String!
   username: String! @unique
+  email: String! @unique
+  avatar: String @default(value: "https://banner2.cleanpng.com/20180429/sww/kisspng-semicolons-cupcakes-and-cucumbers-punctuation-em-5ae5b874b7c742.8798558015250044047528.jpg")
   firstName: String @default(value: "")
   lastName: String
   bio: String
@@ -11,31 +12,71 @@ type User {
   posts: [Post!]! @relation(name:"PostsOfUser", onDelete:CASCADE)
   likes: [Like!]! @relation(name:"LikesOfUser", onDelete:CASCADE)
   comments: [Comment!]! @relation(name:"CommentsOfUser", onDelete:CASCADE)
+  commentLikes : [CommentLike!] @relation(name:"CommentLikesOfUser")
   rooms: [Room!]!
-  loginSecret:String
+  savedPosts: [Post!] @relation(name:"SavedByUser")
+  state : String! @default(value: "1")
+  stories : [Story!] @relation(name:"StoriesOfUser", onDelete:CASCADE)
+  tagedUser : [Story!] @relation(name:"TagOfStory")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  avatar:String @default(value:"https://banner2.cleanpng.com/20180429/sww/kisspng-semicolons-cupcakes-and-cucumbers-punctuation-em-5ae5b874b7c742.8798558015250044047528.jpg")
+}
+
+type UserLogin{
+  id: ID! @id
+  email: String! @unique
+  loginSecret:String
+}
+
+type Story {
+  id:ID! @id
+  files: [File!]!
+  caption : String
+  user : User! @relation(name:"StoriesOfUser")
+  tagUser : [User!] @relation(name:"TagOfStory", onDelete:CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Post {
   id: ID! @id
   location: String
   caption: String!
+  savedByUser : [User!] @relation(name:"SavedByUser")
   user: User! @relation(name:"PostsOfUser")
   files: [File!]! @relation(name:"FilesOfPost", onDelete:CASCADE)
-  likes: [Like!]! @relation(name:"LikeofPost", onDelete:CASCADE)
+  likes: [Like!]! @relation(name:"LikeOfPost", onDelete:CASCADE)
   comments: [Comment!]! @relation(name:"CommentsOfPost", onDelete:CASCADE)
+  state : String! @default(value: "1")
+  hashes : [Hash!]! @relation(name:"Hashofpost", onDelete:CASCADE) 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
+type Hash{
+  id:ID! @id
+  tag: String!
+  post: Post! @relation(name:"Hashofpost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
 type Like {
   id: ID! @id
   user: User! @relation(name:"LikesOfUser")
-  post: Post! @relation(name:"LikeofPost")
+  post: Post! @relation(name:"LikeOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+
+type CommentLike {
+  id: ID! @id
+  user: User! @relation(name:"CommentLikesOfUser")
+  comment: Comment! @relation(name:"CommentOfCommentLike")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
 }
 
 type Comment {
@@ -43,6 +84,7 @@ type Comment {
   text: String!
   user: User! @relation(name:"CommentsOfUser")
   post: Post! @relation(name:"CommentsOfPost")
+  commentLikes : [CommentLike!] @relation(name:"CommentOfCommentLike")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -71,10 +113,4 @@ type Message {
   room: Room!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-}
-
-type UserLogin{
-  id: ID! @id
-  email: String! @unique
-  loginSecret:String
 }

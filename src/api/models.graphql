@@ -1,69 +1,114 @@
 type User {
   id: ID!
+  password: String!
+  avatar: String!
   username: String!
   email: String!
-  firstName: String 
+  firstName: String
   lastName: String
-  fullName:String
+  fullName: String
+  isFollowing: Boolean!
+  isSelf: Boolean!
   bio: String
   following: [User!]!
+  followingCount: Int!
   followers: [User!]!
+  followersCount: Int!
   posts: [Post!]!
   likes: [Like!]!
+  
   comments: [Comment!]!
-  isFollowing:Boolean!
-  isSelf:Boolean!
+  commentLikes: [Comment!]
+  rooms: [Room!]!
   createdAt: String
   updatedAt: String
-  avatar:String
-  followingCount: Int!
-  followersCount: Int!
-  postCount:Int!
-  password: String!
+  postsCount: Int!
+  savedPosts: [Post!]
+  state: String!
+  stories: [Story!]
+  tagedUser: [Story!]
+}
+
+type UserLogin {
+  id: ID!
+  email: String!
+  loginSecret: String
+}
+
+type Story {
+  id: ID!
+  files: [File!]!
+  caption: String
+  user: User!
+  tagUser: [User!]
+  createdAt: String
+  updatedAt: String
 }
 
 type Post {
-  id: ID! 
+  id: ID!
+  commentCount: Int!
   location: String
   caption: String!
   user: User!
   files: [File!]!
   likes: [Like!]!
   comments: [Comment!]!
-  isLiked:Boolean!
-  likeCount:Int!
+  isLiked: Boolean!
+  likeCount: Int!
   createdAt: String
   updatedAt: String
-  commentCount:Int!
+  state: String!
+  savedByUser: [User!]
+  hashes: [Hash!]!
 }
 
 type Like {
-  id: ID! 
+  id: ID!
   user: User!
   post: Post!
   createdAt: String
   updatedAt: String
 }
 
+type CommentLike {
+  id: ID!
+  user: User!
+  comment: Comment!
+  createdAt: String!
+  updatedAt: String!
+}
+
 type Comment {
-  id: ID! 
+  id: ID!
   text: String!
   user: User!
   post: Post!
   createdAt: String
   updatedAt: String
+  commentLikes: [User!]
+  isCommented: Boolean
 }
 
 type File {
-  id: ID! 
+  id: ID!
   url: String!
   post: Post!
   createdAt: String
   updatedAt: String
 }
 
+type Hash {
+  id:ID!
+  tag: String!
+  post: Post!
+  createdAt: String
+  updatedAt: String
+}
+
+
 type Room {
-  id: ID! 
+  id: ID!
   participants: [User!]!
   messages: [Message!]!
   createdAt: String
@@ -71,23 +116,11 @@ type Room {
 }
 
 type Message {
-  id: ID! 
+  id: ID!
   text: String!
-  from: User! 
-  to: User! 
+  from: User!
+  to: User!
   room: Room!
   createdAt: String
   updatedAt: String
-}
-
-type userProfile{
-    user :User!
-    posts:[Post!]!
-    createdAt: String
-  updatedAt: String
-}
-type userLogin{
-  id: ID!
-  loginSecret:String
-  email:String!
 }

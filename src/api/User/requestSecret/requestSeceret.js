@@ -1,8 +1,6 @@
 import { prisma } from '../../../../generated/prisma-client';
 import { generateSecret, sendSecretMail } from '../../../utils';
 
-
-
 export default {
     Mutation: {
         requestSecret: async (_, args) => {
@@ -10,9 +8,9 @@ export default {
             const loginSecret = generateSecret();
             const exitst = await prisma.$exists.userLogin({ email });
             console.log(loginSecret);
+            console.log(exitst);
             if (exitst) {
-                return false
-
+                return false;
             } else {
                 await prisma.createUserLogin({ email });
                 await prisma.updateUserLogin({ data: { loginSecret }, where: { email } })

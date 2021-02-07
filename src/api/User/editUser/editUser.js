@@ -1,17 +1,24 @@
 import { prisma } from "../../../../generated/prisma-client";
-import { isAuthenticated } from "../../../middlewares";
+import { isAuthenticated } from "../../../middlewares"
 
 export default {
     Mutation: {
-        editUser: (_, args, { request }) => {
+        editUser: async (_, args, { request }) => {
             isAuthenticated(request);
-            const { username, email, firstName, lastName, bio, editUser } = args;
+
+            const { username, email, firstName, lastName, bio, avatar } = args;
+            console.log(avatar)
             const { user } = request;
-            return prisma.updateUser({
-                where: { id: user.id }, data: {
-                    username, email, firstName, lastName, bio, editUser
-                }
-            });
+            try {
+             await prisma.updateUser({
+                where: { id: user.id },
+                data: { username, email, firstName, lastName, bio, avatar }
+             });
+                return true;    
+            } catch {
+                return false;
+            }
+            
         }
     }
 }
