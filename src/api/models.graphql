@@ -8,6 +8,7 @@ type User {
   lastName: String
   fullName: String
   isFollowing: Boolean!
+  isFollowers:Boolean!
   isSelf: Boolean!
   bio: String
   following: [User!]!

@@ -20,6 +20,7 @@ type User {
   tagedUser : [Story!] @relation(name:"TagOfStory")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+
 }
 
 type UserLogin{
@@ -51,6 +52,7 @@ type Post {
   hashes : [Hash!]! @relation(name:"Hashofpost", onDelete:CASCADE) 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+
 }
 
 type Hash{
@@ -113,4 +115,4 @@ type Message {
   room: Room!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-}
+} 

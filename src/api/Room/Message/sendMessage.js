@@ -1,6 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
 import { ROOM_FRAGMENT } from "../../../fragments";
-import { isAuthenticated } from "../../../middlewares";
 
 export default {
     Mutation: {
@@ -17,10 +16,9 @@ export default {
                                 connect: [{ id: toId }, { id: user.id }]
                             }
                         })
-                        .$fragment(ROOM_FRAGMENT);
                 }
             } else {
-                room = await prisma.room({ id: roomId }).$fragment(ROOM_FRAGMENT);
+                room = await prisma.room({ id: roomId })
             }
             if (!room) {
                 throw Error("Room not found");
